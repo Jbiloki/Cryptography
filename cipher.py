@@ -9,7 +9,7 @@ def main():
 	if(sys.argv[1] == "PLF"):
 		cipher = playfair.Play()
 		if(cipher.setKey(sys.argv[2])):
-			cipherText = "uztbdlgzpnnwlgtgtuerovldbduhfperhwqsrz"
+			cipherText = "flalrbrnqcgwcsogqn"
 			if(sys.argv[3] == "ENC"):
 				cipher.encrypt(cipherText)
 			if(sys.argv[3] == "DEC"):
@@ -36,8 +36,9 @@ def main():
 		else:
 			print('Key Undefined')
 	if(sys.argv[1] == "VIG"):
-		cipher = railfence.Rail()
+		cipher = vigenre.Vigenre()
 		if(cipher.setKey(sys.argv[2])):	
+			cipherText = "zicvtwqngrzgvtwavzhcqyglmgj"
 			if(sys.argv[3] == "ENC"):
 				cipher.encrypt(cipherText)
 			if(sys.argv[3] == "DEC"):

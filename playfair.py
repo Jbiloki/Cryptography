@@ -5,7 +5,7 @@ class Play:
 		self.key = None
 		
 	def setKey(self,key):
-		if(key.isdigit() == False):
+		if(any(char.isdigit() for char in key) == False):
 			self.key = key
 			s = []
 			tableX = tableY = 0
@@ -24,8 +24,9 @@ class Play:
 					tableX = 0
 				else:
 					tableX += 1
-			else:
-				return False
+			return True
+		else:
+			return False
 	def encrypt(self, text):
 		cipherText = ""
 		myList = [i for i in text]
@@ -34,9 +35,6 @@ class Play:
 				myList.insert(i+1,'x')
 		if(len(myList) %2 != 0):
 			myList.append('x')
-		print(myList, "\n")
-		for i in range(5):
-			print(matrix[i])
 		for i in range(0, len(myList),2):
 			cipherText = self.checkPositionENC(myList[i], myList[i+1],cipherText)
 		print(cipherText)
