@@ -1,25 +1,31 @@
 #!bin/usr/python3
 
 class Play:
-	def __init__(self,key):
-		self.key = key
-		s = []
-		tableX = tableY = 0
-		global matrix
-		matrix = [[0 for x in range(0,5)] for y in range(0,5)]
-		current = 0
-		alphabet = key+"abcdefghiklmnopqrstuvwxyz"
-		for i in range(0, len(alphabet)):
-			if(alphabet[i] not in s):
-				s.insert(current,alphabet[i])
-				current += 1
-		for i in range(0,len(s)):
-			matrix[tableY][tableX] = s[i]
-			if(tableX == 4):
-				tableY += 1
-				tableX = 0
+	def __init__(self):
+		self.key = None
+		
+	def setKey(self,key):
+		if(key.isdigit() == False):
+			self.key = key
+			s = []
+			tableX = tableY = 0
+			global matrix
+			matrix = [[0 for x in range(0,5)] for y in range(0,5)]
+			current = 0
+			alphabet = key+"abcdefghiklmnopqrstuvwxyz"
+			for i in range(0, len(alphabet)):
+				if(alphabet[i] not in s):
+					s.insert(current,alphabet[i])
+					current += 1
+			for i in range(0,len(s)):
+				matrix[tableY][tableX] = s[i]
+				if(tableX == 4):
+					tableY += 1
+					tableX = 0
+				else:
+					tableX += 1
 			else:
-				tableX += 1
+				return False
 	def encrypt(self, text):
 		cipherText = ""
 		myList = [i for i in text]
